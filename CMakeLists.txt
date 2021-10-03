@@ -37,6 +37,11 @@ FILE(GLOB_RECURSE SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
 FILE(GLOB_RECURSE SRC_INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
 
+# For debug libs and exes, add "_d" postfix
+if(NOT DEFINED CMAKE_DEBUG_POSTFIX)
+  set(CMAKE_DEBUG_POSTFIX "_d")
+endif()
+
 add_library(${PROJECT_NAME} ${INCLUDE_FILES} ${SRC_INCLUDE_FILES} ${SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}${ENV_SUFFIX})
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -69,7 +74,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 install(TARGETS
     ${PROJECT_NAME}
-    EXPORT ${PROJECT_NAME}Config
+    EXPORT ${PROJECT_NAME}Target
     RUNTIME DESTINATION ${ENV_RUNTIME_DIR}
         COMPONENT Runtime
     LIBRARY DESTINATION ${ENV_LIBRARY_DIR}
@@ -81,7 +86,7 @@ install(TARGETS
 
 # Install cmake configure files
 install(
-    EXPORT ${PROJECT_NAME}Config
+    EXPORT ${PROJECT_NAME}Target
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/SeetaFace6"
     NAMESPACE
         SeetaFace6::
@@ -91,6 +96,7 @@ write_basic_package_version_file(
     VERSION ${BUILD_VERSION}
     COMPATIBILITY AnyNewerVersion)
 install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/SeetaAuthorizeConfig.cmake"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/SeetaFace6")
 
 install(DIRECTORY ${SOLUTION_DIR}/include/
