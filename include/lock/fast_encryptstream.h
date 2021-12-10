@@ -10,6 +10,8 @@
 #include <vector>
 #include <memory>
 //#include "easy_aes.h"
+#include "seetaauthorize_export.h"
+
 #define AES_BLOCKLEN 16
 namespace orz
 {
@@ -18,7 +20,7 @@ namespace orz
      * The Fast_EncryptInputStream transformat encrypt data to plain data
      * decrypt algorithm is aes
      */
-    class Fast_EncryptInputStream : public FilterInputStream {
+    class SEETAAUTHORIZE_EXPORT Fast_EncryptInputStream : public FilterInputStream {
     public:
         using self = Fast_EncryptInputStream;
 
@@ -94,7 +96,7 @@ namespace orz
     };
 
 
-    class Fast_EncryptOutputStream : public FilterOutputStream {
+    class SEETAAUTHORIZE_EXPORT Fast_EncryptOutputStream : public FilterOutputStream {
     public:
         using self = Fast_EncryptOutputStream;
 

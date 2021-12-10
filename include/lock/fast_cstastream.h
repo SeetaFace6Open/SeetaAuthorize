@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include "orz/io/stream/filterstream.h"
+#include "seetaauthorize_export.h"
 
 namespace orz
 {
@@ -11,7 +12,7 @@ namespace orz
     /**
      * This class transform csta type to sta type
      */
-    class Fast_CstaInputStream : public FilterInputStream {
+    class SEETAAUTHORIZE_EXPORT Fast_CstaInputStream : public FilterInputStream {
     public:
         /**
          * @param in the input stream that contain csta model data
@@ -23,7 +24,7 @@ namespace orz
     /**
      * This class transform sta type to csta type
      */
-    class Fast_CstaOutputStream : public FilterOutputStream {
+    class SEETAAUTHORIZE_EXPORT Fast_CstaOutputStream : public FilterOutputStream {
     public:
 
         /**

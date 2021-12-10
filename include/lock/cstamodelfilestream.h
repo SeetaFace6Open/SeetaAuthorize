@@ -4,7 +4,7 @@
 #include <string>
 #include "orz/io/stream/stream.h"
 #include "orz/io/jug/jug.h"
-
+#include "seetaauthorize_export.h"
 
 namespace orz
 {
@@ -13,7 +13,7 @@ namespace orz
     /**
      * This class parse the json model file,sta and csta model file to get the model file's orz::jug object
     */
-    class CstaModelFileInputStream : public InputStream {
+    class SEETAAUTHORIZE_EXPORT CstaModelFileInputStream : public InputStream {
     public:
         /**
          * @param file the model file path, support json, sta and csta type.
@@ -79,7 +79,7 @@ namespace orz
     /**
      * create model file, may is json ,sta or csta format
      */
-    class CstaModelFileOutputStream : public OutputStream {
+    class SEETAAUTHORIZE_EXPORT CstaModelFileOutputStream : public OutputStream {
     public:
 
         /**
